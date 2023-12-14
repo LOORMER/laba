@@ -1,0 +1,39 @@
+﻿<Page x:Class="Pronin.Pages.Uchetnaya_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pronin.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Uchetnaya_Page" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="uchetnayaGrid" HorizontalContentAlignment="Stretch" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер_записи" Binding="{Binding nomer_zapisi}"/>
+                <DataGridTextColumn Header="Табельный_номер" Binding="{Binding tabelniy_nomer}"/>
+                <DataGridTextColumn Header="Месяц" Binding="{Binding mouth}"/>
+                <DataGridTextColumn Header="Оклад" Binding="{Binding oklad}"/>
+                <DataGridTextColumn Header="Процент_доблаты" Binding="{Binding prosent_doblat}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Editbutn" Content="изменить" Margin="5" Height="30" Width="150" Click="Editbutn_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button x:Name="AddBtn" Content="Добавить" Margin="5" Height="30" Width="150" Click="AddBtn_Click"/>
+            <Button x:Name="delbtn" Content="Удалить" Margin=" 5" Height=" 30" Width="150" Click="delbtn_Click"/>
+            <Button x:Name="obnovbtn" Content="Обновить" Margin=" 5" Height=" 30" Width="150" Click="obnovbtn_Click"/>
+            <Button x:Name="backbtn" Content="Назад" Margin=" 5" Height=" 30" Width="150"/>
+        </StackPanel>
+    </Grid>
+</Page>

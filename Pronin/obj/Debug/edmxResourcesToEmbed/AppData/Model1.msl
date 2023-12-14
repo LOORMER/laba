@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Database1ModelContainer" CdmEntityContainer="Database1Entities">
+    <EntitySetMapping Name="spravochnaia">
+      <EntityTypeMapping TypeName="Database1Model.spravochnaia">
+        <MappingFragment StoreEntitySet="spravochnaia">
+          <ScalarProperty Name="doplat" ColumnName="doplat" />
+          <ScalarProperty Name="vsego" ColumnName="vsego" />
+          <ScalarProperty Name="oklad" ColumnName="oklad" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="tabel_nomer" ColumnName="tabel_nomer" />
+          <ScalarProperty Name="datarojdenia" ColumnName="datarojdenia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ucetnaya">
+      <EntityTypeMapping TypeName="Database1Model.ucetnaya">
+        <MappingFragment StoreEntitySet="ucetnaya">
+          <ScalarProperty Name="dataRogdenia" ColumnName="dataRogdenia" />
+          <ScalarProperty Name="doplata" ColumnName="doplata" />
+          <ScalarProperty Name="nomer_zapisi" ColumnName="nomer_zapisi" />
+          <ScalarProperty Name="tabelniy_nomer" ColumnName="tabelniy_nomer" />
+          <ScalarProperty Name="mouth" ColumnName="mouth" />
+          <ScalarProperty Name="oklad" ColumnName="oklad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

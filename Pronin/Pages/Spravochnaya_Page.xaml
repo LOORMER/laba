@@ -1,0 +1,37 @@
+﻿<Page x:Class="Pronin.Pages.Spravochnaya_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pronin.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Spravochnaya_Page" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <ListView x:Name="SpravocnayaLV" SelectionChanged="SpravocnayaLV_SelectionChanged" Margin="5" Height="300" Width="550">
+        <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding tabel_nomer}"/>
+                        <TextBlock Text="{Binding familia}"/>
+                        <TextBlock Text="{Binding Imia}"/>
+                        <TextBlock Text="{Binding otechestvo}"/>
+                        <TextBlock Text="{Binding datarojdenia}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button x:Name="addbutton" Content="Добавить" Margin="5" Height="30" Width="150" Click="addbutton_Click"/>
+            <Button x:Name="delbutton" Content="Удалить" Margin="5" Height="30" Width="150" />
+            <Button x:Name="refreshbutton" Content="Обновить" Margin="5" Height="30" Width="150" />
+            <Button x:Name="backbutton" Content="Назад" Margin="5" Height="30" Width="150"/>
+        </StackPanel>
+    </Grid>
+</Page>

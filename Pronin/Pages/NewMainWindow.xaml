@@ -1,0 +1,16 @@
+﻿<Window x:Class="Pronin.Pages.NewMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pronin.Pages"
+        mc:Ignorable="d"
+        Title="NewMainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="SprButton" Content="Справочная" Width="150" Height="40" Margin="5" FontSize="15"/>
+            <Button x:Name="UchButton" Content="Учётная" Width="150" Height="40" Margin="5" FontSize="15"/>
+            <Button x:Name="BackButton" Content="Выход" Width="150" Height="40" Margin="5" FontSize="15"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Database1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="spravochnaia">
+          <Key>
+            <PropertyRef Name="tabel_nomer" />
+          </Key>
+          <Property Name="tabel_nomer" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="datarojdenia" Type="date" Nullable="false" />
+          <Property Name="oklad" Type="int" />
+          <Property Name="doplat" Type="int" />
+          <Property Name="vsego" Type="int" />
+        </EntityType>
+        <EntityType Name="ucetnaya">
+          <Key>
+            <PropertyRef Name="nomer_zapisi" />
+          </Key>
+          <Property Name="nomer_zapisi" Type="int" Nullable="false" />
+          <Property Name="tabelniy_nomer" Type="int" Nullable="false" />
+          <Property Name="mouth" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="oklad" Type="int" Nullable="false" />
+          <Property Name="doplata" Type="int" Nullable="false" />
+          <Property Name="dataRogdenia" Type="date" />
+        </EntityType>
+        <Association Name="FK_ucetnaya_spravochnaia">
+          <End Role="spravochnaia" Type="Self.spravochnaia" Multiplicity="1" />
+          <End Role="ucetnaya" Type="Self.ucetnaya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spravochnaia">
+              <PropertyRef Name="tabel_nomer" />
+            </Principal>
+            <Dependent Role="ucetnaya">
+              <PropertyRef Name="tabelniy_nomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Database1ModelContainer">
+          <EntitySet Name="spravochnaia" EntityType="Self.spravochnaia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ucetnaya" EntityType="Self.ucetnaya" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ucetnaya_spravochnaia" Association="Self.FK_ucetnaya_spravochnaia">
+            <End Role="spravochnaia" EntitySet="spravochnaia" />
+            <End Role="ucetnaya" EntitySet="ucetnaya" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="spravochnaia">
+          <Key>
+            <PropertyRef Name="tabel_nomer" />
+          </Key>
+          <Property Name="tabel_nomer" Type="Int32" Nullable="false" />
+          <Property Name="datarojdenia" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ucetnaya" Relationship="Self.FK_ucetnaya_spravochnaia" FromRole="spravochnaia" ToRole="ucetnaya" />
+          <Property Name="FIO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="oklad" Type="Int32" />
+          <Property Name="vsego" Type="Int32" />
+          <Property Name="doplat" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ucetnaya">
+          <Key>
+            <PropertyRef Name="nomer_zapisi" />
+          </Key>
+          <Property Name="nomer_zapisi" Type="Int32" Nullable="false" />
+          <Property Name="tabelniy_nomer" Type="Int32" Nullable="false" />
+          <Property Name="mouth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="oklad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="spravochnaia" Relationship="Self.FK_ucetnaya_spravochnaia" FromRole="ucetnaya" ToRole="spravochnaia" />
+          <Property Name="doplata" Type="Int32" Nullable="false" />
+          <Property Name="dataRogdenia" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_ucetnaya_spravochnaia">
+          <End Role="spravochnaia" Type="Self.spravochnaia" Multiplicity="1" />
+          <End Role="ucetnaya" Type="Self.ucetnaya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spravochnaia">
+              <PropertyRef Name="tabel_nomer" />
+            </Principal>
+            <Dependent Role="ucetnaya">
+              <PropertyRef Name="tabelniy_nomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="spravochnaia" EntityType="Self.spravochnaia" />
+          <EntitySet Name="ucetnaya" EntityType="Self.ucetnaya" />
+          <AssociationSet Name="FK_ucetnaya_spravochnaia" Association="Self.FK_ucetnaya_spravochnaia">
+            <End Role="spravochnaia" EntitySet="spravochnaia" />
+            <End Role="ucetnaya" EntitySet="ucetnaya" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Database1ModelContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="spravochnaia">
+            <EntityTypeMapping TypeName="Database1Model.spravochnaia">
+              <MappingFragment StoreEntitySet="spravochnaia">
+                <ScalarProperty Name="doplat" ColumnName="doplat" />
+                <ScalarProperty Name="vsego" ColumnName="vsego" />
+                <ScalarProperty Name="oklad" ColumnName="oklad" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="tabel_nomer" ColumnName="tabel_nomer" />
+                <ScalarProperty Name="datarojdenia" ColumnName="datarojdenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ucetnaya">
+            <EntityTypeMapping TypeName="Database1Model.ucetnaya">
+              <MappingFragment StoreEntitySet="ucetnaya">
+                <ScalarProperty Name="dataRogdenia" ColumnName="dataRogdenia" />
+                <ScalarProperty Name="doplata" ColumnName="doplata" />
+                <ScalarProperty Name="nomer_zapisi" ColumnName="nomer_zapisi" />
+                <ScalarProperty Name="tabelniy_nomer" ColumnName="tabelniy_nomer" />
+                <ScalarProperty Name="mouth" ColumnName="mouth" />
+                <ScalarProperty Name="oklad" ColumnName="oklad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
